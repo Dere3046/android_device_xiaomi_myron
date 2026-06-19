@@ -42,7 +42,7 @@ WIFI ❌
 其余功能待补充  
 后续会修复不支持的特性
 ## 注意
-对于假回锁用户，自行构建的OrangeFox不能直接刷入recovery分区(Release里的是处理好的)，需要使用仓库下的“移植vbmeta.py”脚本把原厂recovery的avb信息移植过去后再刷入  
+对于假回锁用户，自行构建的OrangeFox不能直接刷入recovery分区(Release里的是处理好的)，需要使用仓库下的“transplanting_vbmeta.py”脚本把原厂recovery的avb信息移植过去后再刷入  
 ```bash
 python transplanting_vbmeta.py <原厂recovery.img> <被修补的镜像> <修补后的文件>
 ```
