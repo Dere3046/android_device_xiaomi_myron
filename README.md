@@ -30,24 +30,32 @@ mka recoveryimage
 如需使用github actions构建，请自行寻找脚本
 
 
-## 目前支持的特性
-触屏(这个不支持就难绷了)✅  
-震动 ❌  
-解密Data ✅  
-MTP ✅  
-安装KernelSU(不支持SukiSU和KernelSU Next，需要的可修改fox_myron.mk后自行构建) ✅  
-手电筒 ✅  
-WIFI ❌  
+## 支持的特性
+- [X] 显示
+- [X] 触屏 
+- [X] 解密Data
+- [X] 刷入卡刷包
+- [X] 备份
+- [X] KernelSU, KernelSU Next & SukiSU Ultra 安装
+- [X] MTP
+- [X] ADB/FastbootD
+- [X] 手电筒
 
-其余功能待补充  
-后续会修复不支持的特性
+## 不支持的特性
+- [ ] WLAN(为什么Recovery需要WLAN支持?)(遥遥无期)
+- [ ] 震动(已经在研究了)
+
 ## 注意
 对于假回锁用户，自行构建的OrangeFox不能直接刷入recovery分区(Release里的是处理好的)，需要使用仓库下的“transplanting_vbmeta.py”脚本把原厂recovery的avb信息移植过去后再刷入  
 ```bash
 python transplanting_vbmeta.py <原厂recovery.img> <被修补的镜像> <修补后的文件>
 ```
-
-目前除 Wi-Fi 相关二进制文件（仍来源于 變換風雲@coolapk）外，其余二进制文件均提取自 HyperOS 3.0.303.0。后续增加 Wi-Fi 支持时，将统一改为从官方系统中提取所有二进制文件。
+---
+1.1.0及其之前的版本配置文件保存在/persisit中，1.2.0之后改为了保存到/data/recovery(避免污染persisit分区)
+使用下面的命令可删除保存在persist中的OrangeFox配置文件
+```bash
+rm -r /mnt/vendor/persist/Fox
+```
 
 ## Maintainer
 haohao3001 - 维护者  
